@@ -1,0 +1,39 @@
+{% load static %}
+    {% include './navBar.html' %}
+    <!-- Navbar End -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <h1 class="display-6 text-center">All Doctors</h1>
+            {% if alldoc %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Qualification</th>
+                        <th>Specialist</th>
+                        <th>Year of Experience</th>
+                        <th>Available</th>
+                        <th>Timing</th>
+                        <th>Make</th>
+                    </tr>
+                    <tbody>
+                        {% for doc in alldoc %}
+                            <tr>
+                                <td>{{doc.dname}}</td>
+                                <td>{{doc.qualification}}</td>
+                                <td>{{doc.specialist}}</td>
+                                <td>{{doc.yoe}}</td>
+                                <td>{{doc.days}}</td>
+                                <td>{{doc.time_slot}}</td>
+                                <td><a href="/appoint/{{doc.did}}">Appointment</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h3 class="text-center text-danger">Sorry No Doctor is found</h3>
+            {% endif %} 
+        </div>
+    </div>
+    <!-- Footer Start -->
+    {% include './footer.html' %}

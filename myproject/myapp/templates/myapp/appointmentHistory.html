@@ -1,0 +1,33 @@
+{% load static %}
+    {% include './navBar.html' %}
+    <!-- Navbar End -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <h1 class="display-6 text-center">All Appointments</h1>
+            {% if myapp %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Doctor Name</th>
+                        <th>Appointment Made on</th>
+                        <th>Appointment Date</th>
+                        <th>Timing</th>
+                    </tr>
+                    <tbody>
+                        {% for doc in myapp %}
+                            <tr>
+                                <td>{{doc.dname}}</td>
+                                <td>{{doc.appmadeon}}</td>
+                                <td>{{doc.appdate}}</td>
+                                <td>{{doc.time_slot}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+            </table>
+            {% else %}
+                <h3 class="text-center text-danger">Sorry No Doctor is found</h3>
+            {% endif %} 
+        </div>
+    </div>
+    <!-- Footer Start -->
+    {% include './footer.html' %}

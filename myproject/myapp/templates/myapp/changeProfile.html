@@ -1,0 +1,38 @@
+{% load static %}
+    {% include './navBar.html' %}
+    <!-- Navbar End -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h1 class="display-5">Change Profile</h1>
+            </div>
+            <div class="row justify-content-center position-relative">
+                <div class="col-lg-8">
+                    <div class="bg-white rounded p-5 m-5 mb-0">
+                        <form name="reg-frm" method="post">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                {% for frm in form %}
+                                    <div class="col-12 mb-2">
+                                    {{ frm }}
+                                    </div>
+                                {% endfor %}
+                                <div class="col-12">
+                                    <input type="submit" value="Save Changes" class="btn btn-primary w-100 py-3">
+
+                                </div>
+                            </div>
+                        </form>
+                        {% if messages %}
+                            {% for msg in messages %}
+                                {{ msg }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    {% include './footer.html' %}
